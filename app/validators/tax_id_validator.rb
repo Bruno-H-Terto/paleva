@@ -1,6 +1,14 @@
 class TaxIdValidator < ActiveModel::Validator
   def validate(record)
-    if conditions(record)
+    if record.respond_to?(:individual_tax_id)
+      individual_tax_id(record)
+    end
+  end
+
+  private
+
+  def individual_tax_id(record)
+    if tax_id_conditions(record)
       record.errors.add(:individual_tax_id, I18n.t('invalid_registration'))
       return
     end
@@ -15,17 +23,11 @@ class TaxIdValidator < ActiveModel::Validator
     end
   end
 
-  private
-
-  def conditions(record)
-    record.individual_tax_id.present? && (invalid_format?(record) || repeat_number?(record))
+  def tax_id_conditions(record)
+    record.individual_tax_id.present? && (tax_id_invalid_format?(record) || repeat_number?(record.individual_tax_id))
   end
 
-  def repeat_number?(record)
-    record.individual_tax_id.chars.uniq.length == 1
-  end
-
-  def invalid_format?(record)
+  def tax_id_invalid_format?(record)
     if record.individual_tax_id.length != 11
       record.errors.add(:individual_tax_id, I18n.t('out_range_length', number: record.individual_tax_id.length))
       return true
@@ -34,6 +36,10 @@ class TaxIdValidator < ActiveModel::Validator
       return true
     end
     false
+  end
+
+  def repeat_number?(record)
+    record.chars.uniq.length == 1
   end
 
   def sum_range(validation_number, tax_id, position_tx_id, index = 0)

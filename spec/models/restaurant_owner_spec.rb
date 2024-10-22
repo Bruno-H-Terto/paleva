@@ -26,7 +26,7 @@ RSpec.describe RestaurantOwner, type: :model do
       expect(restaurant_owner).not_to be_valid
     end
 
-    it 'CPF não pode ser repetido' do
+    it 'CPF deve ser unico' do
       RestaurantOwner.create!(individual_tax_id: '91348691077', name: 'Ruby Dev', surname: 'TDD', email: 'td13@ruby.com', password: 'treina_dev13')
 
       restaurant_owner = RestaurantOwner.new(individual_tax_id: '91348691077', name: 'Rails New', surname: 'TD13', email: 'helloworld@rails.com', password: 'treina_dev13')
