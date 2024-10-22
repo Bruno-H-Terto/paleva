@@ -9,7 +9,7 @@ pt-BR:
   invalid_update: "não é permitido altarar o campo %{name}"
   restaurant:
     registration:
-      success: 'Restaurante registrado realizado com sucesso'
+      success: 'Restaurante registrado com sucesso'
       failure: 'Não foi possível registrar o Restaurante'
   links:
     restaurant_owner_log_in: 'Sou Proprietário'

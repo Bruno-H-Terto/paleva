@@ -3,6 +3,8 @@ class RestaurantsController < ApplicationController
   before_action :fetch_restaurant_owner
 
   def new
+    return redirect_to root_path, notice: 'Restaurante já cadastrado' if @owner.restaurant.present?
+
     @restaurant = @owner.build_restaurant
     @restaurant.build_address
   end

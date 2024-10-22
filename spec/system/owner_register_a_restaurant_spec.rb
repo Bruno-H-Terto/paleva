@@ -25,13 +25,13 @@ describe 'Proprietário acessa tela de registro' do
       fill_in 'Complemento', with: 'Loja 1'
       click_on 'Cadastrar'
 
-      expect(page).to have_content 'Restaurante registrado realizado com sucesso'
+      expect(page).to have_content 'Restaurante registrado com sucesso'
     end
 
     it 'e falha ao cadastrar restaurante' do
       login_as owner, scope: :restaurant_owner
       visit new_restaurant_path
-      fill_in 'Nome', with: 'Entregas TD13'
+      fill_in 'Nome', with: ''
       fill_in 'Razão social', with: 'TD & Devs Ruby LTDA'
       fill_in 'CNPJ', with: '89078820000100'
       fill_in 'Telefone', with: '(32) 4022-8922'
@@ -50,5 +50,15 @@ describe 'Proprietário acessa tela de registro' do
       expect(Address.count).to eq 0
     end
     
+    it 'e falha ao tentar registrar mais de um Restaurante' do
+      Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Workd LTDA', register_number: '89078820000100',
+                         comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 
+                         restaurant_owner: owner)
+
+      login_as owner, scope: :restaurant_owner
+      visit new_restaurant_path
+
+      expect(page).to have_content 'Restaurante já cadastrado'
+    end
   end
 end
