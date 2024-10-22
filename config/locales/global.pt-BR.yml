@@ -1,0 +1,13 @@
+pt-BR:
+  register: 'Cadastro'
+  registration: 'Cadastrar'
+  create_account: 'Criar conta'
+  characters_minimum: 'caracteres mínimos'
+  invalid_registration: 'não é um registro válido'
+  out_range_length: "número de digitos incorretos: digitado %{number}"
+  links:
+    restaurant_owner_log_in: 'Sou Proprietário'
+    log_in: 'Acesse sua conta'
+    sign_up: 'Não possui cadastro?'
+    forgot_your_password: 'Esqueceu sua senha?'
+  

@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      restaurant_owner:
+        one: 'Proprietário'
+        other: 'Proprietários'
+    attributes:
+      restaurant_owner:
+        individual_tax_id: 'CPF'
+        name: 'Nome'
+        surname: 'Sobrenome'
+
