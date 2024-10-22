@@ -5,6 +5,8 @@ pt-BR:
   characters_minimum: 'caracteres mínimos'
   invalid_registration: 'não é um registro válido'
   out_range_length: "número de digitos incorretos: digitado %{number}"
+  not_is_a_number: 'digite apenas números'
+  invalid_update: "não é permitido altarar o campo %{name}"
   links:
     restaurant_owner_log_in: 'Sou Proprietário'
     log_in: 'Acesse sua conta'

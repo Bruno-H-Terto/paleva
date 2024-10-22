@@ -130,6 +130,7 @@ describe 'Usuário acessa o sistema' do
       click_on 'Criar conta'
 
       expect(page).to have_content 'CPF não é um registro válido'
+      expect(page).to have_content 'CPF digite apenas números'
     end
   end
 end
