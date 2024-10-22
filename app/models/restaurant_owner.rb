@@ -4,10 +4,13 @@ class RestaurantOwner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :restaurant
+
   validates :individual_tax_id, presence: true, uniqueness: true
   validates :name, :surname, presence: true
   validates_with TaxIdValidator
   before_validation :individual_tax_id_not_can_be_update, on: :update
+
 
 
   private

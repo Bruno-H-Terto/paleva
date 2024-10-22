@@ -16,7 +16,7 @@ describe 'Usuário acessa o sistema' do
       fill_in 'Confirme sua senha', with: 'treina_dev13'
       click_on 'Criar conta'
 
-      expect(page).to have_css '.notice', text: 'Bem vindo! Você realizou seu registro com sucesso.'
+      expect(page).to have_content 'Por favor, conclua seu cadastro'
     end
 
     it 'com campos ausentes' do

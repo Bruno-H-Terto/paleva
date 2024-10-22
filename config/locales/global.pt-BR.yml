@@ -7,6 +7,10 @@ pt-BR:
   out_range_length: "número de digitos incorretos: digitado %{number}"
   not_is_a_number: 'digite apenas números'
   invalid_update: "não é permitido altarar o campo %{name}"
+  restaurant:
+    registration:
+      success: 'Restaurante registrado realizado com sucesso'
+      failure: 'Não foi possível registrar o Restaurante'
   links:
     restaurant_owner_log_in: 'Sou Proprietário'
     log_in: 'Acesse sua conta'

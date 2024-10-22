@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
 
   def restaurant_active
     current_path_is_valid = (request.path != new_restaurant_path) && (request.path != destroy_restaurant_owner_session_path)
-    # redirect_to new_restaurant_path, alert: 'Por favor, conclua seu cadastro' if current_path_is_valid && current_restaurant_owner.restaurant.nil?
+    redirect_to new_restaurant_path, alert: 'Por favor, conclua seu cadastro' if current_path_is_valid && current_restaurant_owner.restaurant.nil?
   end
 end

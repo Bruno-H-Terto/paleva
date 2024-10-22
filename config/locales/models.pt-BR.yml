@@ -4,9 +4,27 @@ pt-BR:
       restaurant_owner:
         one: 'Proprietário'
         other: 'Proprietários'
+      restaurant:
+        one: 'Restaurante'
+        other: 'Restaurantes'
+      address: 'Endereço'
     attributes:
       restaurant_owner:
         individual_tax_id: 'CPF'
         name: 'Nome'
         surname: 'Sobrenome'
+      restaurant:
+        name: 'Nome'
+        brand_name: 'Razão social'
+        register_number: 'CNPJ'
+        comercial_phone: 'Telefone'
+        email: 'E-mail'
+      address:
+        street: 'Logradouro'
+        number: 'Número'
+        district: 'Bairro'
+        city: 'Cidade'
+        state: 'Estado'
+        zip_code: 'CEP'
+        complement: 'Complemento'
 

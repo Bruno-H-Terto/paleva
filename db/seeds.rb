@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+RestaurantOwner.create!(individual_tax_id: '91348691077', 
+                  name: 'Ruby Dev', surname: 'TDD', email: 'td13@ruby.com',
+                  password: 'treina_dev13') 
