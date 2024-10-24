@@ -5,6 +5,13 @@ class Restaurant < ApplicationRecord
 
   validates :name, :brand_name, :comercial_phone, :register_number,
             :email, presence: true
+  validates :register_number, uniqueness: true
 
-  validates_with TaxIdValidator, lenght: 14, field: :register_number, on: :create
+  validates :email, format: { 
+    with: /\A[a-z0-9]+([\.\-_][a-z0-9]+)*@[a-z0-9]+(-[a-z0-9]+)*(\.[a-z]{2,})+\z/i,
+    message: 'must contain a valid email'
+  }
+  
+
+  validates_with TaxIdValidator, lenght: 14, field: :register_number
 end

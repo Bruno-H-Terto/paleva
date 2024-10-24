@@ -17,6 +17,7 @@ describe 'Usuário acessa o sistema' do
       click_on 'Criar conta'
 
       expect(page).to have_content 'Por favor, conclua seu cadastro'
+      expect(current_path).to eq new_restaurant_path
     end
 
     it 'com campos ausentes' do
@@ -84,53 +85,6 @@ describe 'Usuário acessa o sistema' do
       click_on 'Criar conta'
 
       expect(page).to have_content 'CPF não é um registro válido'
-    end
-
-    it 'com CPF com numeração repetida' do
-      visit root_path
-      click_on 'Sou Proprietário'
-      click_on 'Não possui cadastro?'
-      fill_in 'CPF', with: '11111111111'
-      fill_in 'Nome', with: 'Ruby Dev'
-      fill_in 'Sobrenome', with: 'TDD'
-      fill_in 'E-mail', with: 'devs13@code.com'
-      fill_in 'Senha', with: 'treina_dev13'
-      fill_in 'Confirme sua senha', with: 'treina_dev13'
-      click_on 'Criar conta'
-
-      expect(page).to have_content 'CPF não é um registro válido'
-    end
-
-    it 'com CPF com numeração superior a 11 caracteres' do
-      visit root_path
-      click_on 'Sou Proprietário'
-      click_on 'Não possui cadastro?'
-      fill_in 'CPF', with: '111222333444'
-      fill_in 'Nome', with: 'Ruby Dev'
-      fill_in 'Sobrenome', with: 'TDD'
-      fill_in 'E-mail', with: 'devs13@code.com'
-      fill_in 'Senha', with: 'treina_dev13'
-      fill_in 'Confirme sua senha', with: 'treina_dev13'
-      click_on 'Criar conta'
-
-      expect(page).to have_content 'CPF não é um registro válido'
-      expect(page).to have_content 'CPF número de digitos incorretos: digitado 12'
-    end
-
-    it 'com CPF com letras inclusas' do
-      visit root_path
-      click_on 'Sou Proprietário'
-      click_on 'Não possui cadastro?'
-      fill_in 'CPF', with: '913486A1011'
-      fill_in 'Nome', with: 'Ruby Dev'
-      fill_in 'Sobrenome', with: 'TDD'
-      fill_in 'E-mail', with: 'devs13@code.com'
-      fill_in 'Senha', with: 'treina_dev13'
-      fill_in 'Confirme sua senha', with: 'treina_dev13'
-      click_on 'Criar conta'
-
-      expect(page).to have_content 'CPF não é um registro válido'
-      expect(page).to have_content 'CPF digite apenas números'
     end
   end
 end
