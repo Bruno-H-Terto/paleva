@@ -11,7 +11,7 @@ class Restaurant < ApplicationRecord
     with: /\A[a-z0-9]+([\.\-_][a-z0-9]+)*@[a-z0-9]+(-[a-z0-9]+)*(\.[a-z]{2,})+\z/i,
     message: 'must contain a valid email'
   }
-  
 
+  validates_with PhoneValidator, field: :comercial_phone
   validates_with TaxIdValidator, lenght: 14, field: :register_number
 end
