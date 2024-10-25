@@ -4,6 +4,7 @@ class BusinessHour < ApplicationRecord
   enum :status, { closed: 0, open: 1}
   enum :day_of_week, { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4, saturday: 5, sunday: 6 }
   validate :presence_hour
+  validates :day_of_week, uniqueness: {scope: :restaurant_id}
 
   def display_hours
     if open?
