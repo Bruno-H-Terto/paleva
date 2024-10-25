@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.2].define(version: 2024_10_24_214548) do
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
-    t.string "number", null: false
+    t.integer "number", null: false
     t.string "district", null: false
     t.string "city", null: false
     t.string "state", null: false

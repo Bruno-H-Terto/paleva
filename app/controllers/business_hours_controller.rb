@@ -11,13 +11,16 @@ class BusinessHoursController < ApplicationController
   def create
     adjust_status_values(params[:restaurant][:business_hours_attributes])
     @business_hours = @restaurant.business_hours.build(business_hours_params[:business_hours_attributes].values)
-    @business_hours.each do |business_hour|
-      business_hour.validate
-    end
+    @business_hours.each {|business_hour| business_hour.validate}
+
     if @business_hours.all?(&:valid?)
-      @business_hours.each do |business_hour|
-        business_hour.save
+      if @business_hours.all? { |day| day.closed? }
+        flash.now[:alert] = 'Selecione ao menos um dia de funcionamento'
+        render :new, status: :unprocessable_entity
+        return
       end
+
+      @business_hours.each {|business_hour| business_hour.save}
       redirect_to restaurant_path(@restaurant), notice: 'Horário registrado com sucesso'
     else
       flash.now[:alert] = 'Não foi possível incluir seus horários, revise os campos abaixo:'
