@@ -7,6 +7,8 @@ pt-BR:
   out_range_length: "número de digitos incorretos: digitado %{number}"
   not_is_a_number: 'digite apenas números'
   invalid_update: "não é permitido altarar o campo %{name}"
+  open: 'Aberto'
+  closed: 'Fechado'
   restaurant:
     registration:
       success: 'Restaurante registrado com sucesso'
@@ -16,4 +18,13 @@ pt-BR:
     log_in: 'Acesse sua conta'
     sign_up: 'Não possui cadastro?'
     forgot_your_password: 'Esqueceu sua senha?'
+  day_of_week:
+    sunday: 'Domingo'
+    monday: 'Segunda-feira'
+    tuesday: 'Terça-feira'
+    wednesday: 'Quarta-feira'
+    thursday: 'Quinta-feira'
+    friday: 'Sexta-feira'
+    saturday: 'Sábado'
+
   

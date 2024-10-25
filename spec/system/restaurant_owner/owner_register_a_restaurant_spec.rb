@@ -21,11 +21,18 @@ describe 'Proprietário acessa tela de registro' do
       fill_in 'Bairro', with: 'Rubista'
       fill_in 'Cidade', with: 'Condado'
       fill_in 'Estado', with: 'MG'
-      fill_in 'CEP', with: '3600-000'
+      fill_in 'CEP', with: '36000-000'
       fill_in 'Complemento', with: 'Loja 1'
       click_on 'Cadastrar'
 
       expect(page).to have_content 'Restaurante registrado com sucesso'
+      expect(page).to have_css 'nav', text: 'Ruby Dev - td13@ruby.com'
+      expect(page).to have_content "Entregas TD13 - #{Restaurant.last.code}"
+      expect(page).to have_content 'Av. TDD Ruby on Rails'
+      expect(page).to have_content 'Loja 1'
+      expect(page).to have_content 'Rubista'
+      expect(page).to have_content 'Condado, MG'
+      expect(page).to have_content '36000-000'
     end
 
     context 'e falha' do

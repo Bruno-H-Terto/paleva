@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :restaurant_active, only: %i[new]
+  before_action :restaurant_active, except: %i[create]
   before_action :fetch_restaurant_owner
 
   def new
@@ -11,10 +11,16 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = @owner.create_restaurant(restaurant_params)
-    return redirect_to root_path, notice: t('restaurant.registration.success') if @restaurant.save
-
+    @business_hours = []
+    if @restaurant.save
+      return redirect_to restaurant_path(@restaurant), notice: t('restaurant.registration.success')
+    end
     flash[:alert] = t('restaurant.registration.failure')
     render :new
+  end
+
+  def show
+    @restaurant = @owner.restaurant
   end
 
   private

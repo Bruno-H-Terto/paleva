@@ -1,0 +1,25 @@
+<%= form_with model: restaurant, url: restaurant_business_hours_path(restaurant), method: :post, data: {turbo: false} do |form| %>
+  <%= form.fields_for :business_hours do |business_hour_form| %>
+    <div id=<%= "#{business_hour_form.object.day_of_week}" %>>
+      <%= business_hour_form.hidden_field :day_of_week, value: business_hour_form.object.day_of_week %>
+      <h3><%= business_hour_form.object.day_of_week %></h3>
+      <div>
+        <%= business_hour_form.label :open_time %>
+        <%= business_hour_form.time_field :open_time %>
+      </div>
+
+      <div>
+        <%= business_hour_form.label :close_time %>
+        <%= business_hour_form.time_field :close_time %>
+      </div>
+
+      <div>
+        <%= business_hour_form.label :status %>
+        <%= business_hour_form.check_box :status %>
+      </div>
+    </div>
+  <% end %>
+  <div>
+    <%= form.submit t('registration') %>
+  </div>
+<% end %>

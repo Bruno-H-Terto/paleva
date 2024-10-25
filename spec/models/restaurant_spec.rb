@@ -142,5 +142,17 @@ RSpec.describe Restaurant, type: :model do
 
       expect(restaurant).not_to be_valid
     end
+
+    it 'deve ter um código de 6 dígitos gerado automáticamente' do
+      restaurant = Restaurant.new(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
+                                  comercial_phone: '(32) 994022-892', email: 'podraodev@ruby.com', 
+                                  restaurant_owner: owner)
+
+      allow(SecureRandom).to receive(:alphanumeric).with(6).and_return('ABCD1234')
+
+      restaurant.save
+
+      expect(restaurant.code).to eq 'ABCD1234'
+    end
   end
 end

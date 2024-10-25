@@ -17,6 +17,7 @@ describe 'Usuário acessa o sistema' do
       click_on 'Criar conta'
 
       expect(page).to have_content 'Por favor, conclua seu cadastro'
+      expect(page).not_to have_link 'Sou Proprietário'
       expect(current_path).to eq new_restaurant_path
     end
 

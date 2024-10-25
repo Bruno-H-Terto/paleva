@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_22_121907) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_24_214548) do
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
     t.string "number", null: false
@@ -24,6 +24,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_121907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_type", "user_id"], name: "index_addresses_on_user"
+  end
+
+  create_table "business_hours", force: :cascade do |t|
+    t.integer "day_of_week", null: false
+    t.integer "status", default: 0
+    t.string "open_time"
+    t.string "close_time"
+    t.integer "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_business_hours_on_restaurant_id"
   end
 
   create_table "restaurant_owners", force: :cascade do |t|
@@ -50,8 +61,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_121907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "restaurant_owner_id", null: false
+    t.string "code", null: false
     t.index ["restaurant_owner_id"], name: "index_restaurants_on_restaurant_owner_id"
   end
 
+  add_foreign_key "business_hours", "restaurants"
   add_foreign_key "restaurants", "restaurant_owners"
 end

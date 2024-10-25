@@ -1,7 +1,6 @@
 class PhoneValidator < ActiveModel::Validator
   def validate(record)
     field = options[:field]
-
     phone_validator(record, field)
   end
 
@@ -16,10 +15,9 @@ class PhoneValidator < ActiveModel::Validator
   def invalid_format_phone?(record, field)
     number = record.send(field)
     digits = ''
-    if number.match /\A[(]?(\d{2})[)]?[\ ]?(\d{4,5})[-\ ]?(\d{4})\z/
+    unless number.match /\A[(]?(\d{2})[)]?[\ ]?(\d{4,5})[-\ ]?(\d{4})\z/
       digits = number.gsub(/()-/, '')
-    else
-      return record.errors.add(field, I18n.t('out_range_length', number: ))
+      return record.errors.add(field, I18n.t('out_range_length', number: digits))
     end
 
     false

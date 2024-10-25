@@ -1,8 +1,12 @@
 <div>
   <nav>
     <ul>
-      <li>Home</li>
-      <li><%= link_to t('links.restaurant_owner_log_in'), new_restaurant_owner_session_path %></li>
+      <li><%= link_to 'Home', root_path %></li>
+      <% if restaurant_owner_signed_in? %>
+        <h4><%= current_restaurant_owner.name %> - <%= current_restaurant_owner.email %></h4>
+      <% else %>
+        <li><%= link_to t('links.restaurant_owner_log_in'), new_restaurant_owner_session_path %></li>
+      <% end %>
     </ul>
   </nav>
 </div>
