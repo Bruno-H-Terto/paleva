@@ -1,2 +1,17 @@
 <%= render 'restaurant', restaurant: @restaurant %>
 
+<section>
+  <div id="business-hours">
+      <div>
+        <% if @restaurant.business_hours.any? %>
+          <p>Horário de funcionamento</p>
+          <% @restaurant.business_hours.each do |business_hour| %>
+            <p><%= business_hour.display_hours%> - <%= link_to 'Editar', edit_restaurant_business_hour_path(@restaurant, business_hour) %></p>
+          <% end %>
+        <% else %>
+          <%= link_to 'Cadastrar horário de funcionamento', new_restaurant_business_hour_path(@restaurant) %>
+        <% end %>
+      </div>
+  </div>
+  <div>Registre aqui o seu cardápio</div>
+</section>

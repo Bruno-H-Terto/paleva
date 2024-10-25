@@ -11,7 +11,7 @@ class Restaurant < ApplicationRecord
 
   validates :email, format: { 
     with: /\A[a-z0-9]+([\.\-_][a-z0-9]+)*@[a-z0-9]+(-[a-z0-9]+)*(\.[a-z]{2,})+\z/i,
-    message: 'must contain a valid email'
+    message: 'deve ser em um formato válido'
   }
 
   validates_with PhoneValidator, field: :comercial_phone

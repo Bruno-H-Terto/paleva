@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :restaurant_active, except: %i[create]
+  before_action :authenticate_restaurant_owner!
   before_action :fetch_restaurant_owner
 
   def new
