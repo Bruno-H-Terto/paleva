@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :restaurant_active, except: %i[create]
   before_action :authenticate_restaurant_owner!
   before_action :fetch_restaurant_owner
+  before_action :fetch_restaurant, only: %i[show]
 
   def new
     return redirect_to root_path, notice: 'Restaurante já cadastrado' if @owner.restaurant.present?
@@ -21,13 +22,21 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = @owner.restaurant
+    
   end
 
   private
 
   def fetch_restaurant_owner
     @owner = current_restaurant_owner
+  end
+
+  def fetch_restaurant
+    owner = fetch_restaurant_owner
+    @restaurant = Restaurant.find(params[:id])
+    if @restaurant.restaurant_owner != owner
+      return redirect_to Restaurant.find_by(restaurant_owner: owner), alert: 'Acesso negado - Não é permito visualizar dados de outro Restaurante'
+    end
   end
 
   def restaurant_params

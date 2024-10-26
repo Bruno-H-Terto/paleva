@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe RestaurantOwner, type: :model do
   context '#valid?' do
+    it { should have_one(:restaurant) }
+
     it 'todos os dados válidos' do
       restaurant_owner = RestaurantOwner.new(individual_tax_id: '91348691077', name: 'Ruby Dev', surname: 'TDD', email: 'td13@ruby.com', password: 'treina_dev13')
       

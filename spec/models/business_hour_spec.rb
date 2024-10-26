@@ -14,6 +14,8 @@ RSpec.describe BusinessHour, type: :model do
       restaurant_owner: owner)
     }
 
+    it { should belong_to(:restaurant) }
+
     it 'todos os campos válidos' do
       business_hour = BusinessHour.new(day_of_week: :monday, status: :open, open_time: '07:00',
                                        close_time: '12:00', restaurant: restaurant)

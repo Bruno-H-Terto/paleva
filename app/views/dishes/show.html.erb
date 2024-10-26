@@ -1,12 +1,1 @@
-<div>
-  <p>Prato: <%= @dish.menu_item.name %></p>
-  <p>Descrição: <%= @dish.menu_item.description %></p>
-  <% if @dish.menu_item.calories.present? %>
-    <p>Calorias: <%= @dish.menu_item.calories %></p>
-  <% else %>
-    <p>Calorias: Não informado</p>
-  <% end %>
-  <% if @dish.photo.present? %>
-    <p><%= image_tag(@dish.photo)%></p>
-  <% end %>
-</div>
+<%= render  'menu_items/menu_item', item: @dish %>

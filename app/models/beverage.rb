@@ -1,4 +1,4 @@
-class Dish < ApplicationRecord
+class Beverage < ApplicationRecord
   belongs_to :restaurant
   has_one :menu_item, as: :option
   accepts_nested_attributes_for :menu_item

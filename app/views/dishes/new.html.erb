@@ -1,29 +1,3 @@
 <%= render  'shared/errors', object: @dish %>
 
-<%= form_with model: @dish, url: restaurant_dishes_path(@restaurant), data: {turbo: false}, method: :post do |form| %>
-  <%= form.fields_for :menu_item do |menu_item_form| %>
-    <div>
-      <%= form.label :name, 'Nome' %>
-      <%= form.text_field :name %>
-    </div>
-
-    <div>
-      <%= form.label :description, 'Descrição' %>
-      <%= form.text_area :description %>
-    </div>
-
-    <div>
-      <%= form.label :photo, 'Foto demonstrativa' %>
-      <%= form.file_field :photo %>
-    </div>
-
-    <div>
-      <%= form.label :calories, 'Calorias' %>
-      <%= form.number_field :calories, min: 0 %>
-    </div>
-
-    <div>
-      <%= form.submit 'Cadastrar' %>
-    </div>
-  <% end %>
-<% end %>
+<%= render  'menu_items/form', item: @dish, restaurant: @restaurant %>

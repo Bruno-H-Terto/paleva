@@ -1,0 +1,12 @@
+<div>
+  <p><%= t("#{item.class.name.downcase}") %>: <%= item.menu_item.name %></p>
+  <p>Descrição: <%= item.menu_item.description %></p>
+  <% if item.menu_item.calories.present? %>
+    <p>Calorias: <%= item.menu_item.calories %></p>
+  <% else %>
+    <p>Calorias: Não informado</p>
+  <% end %>
+  <% if item.photo.present? %>
+    <p><%= image_tag(item.photo)%></p>
+  <% end %>
+</div>

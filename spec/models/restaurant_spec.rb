@@ -8,6 +8,10 @@ RSpec.describe Restaurant, type: :model do
       password: 'treina_dev13') 
     }
 
+    it { should have_one(:address) }
+    it { should have_many(:business_hours) }
+    it { should accept_nested_attributes_for(:business_hours) }
+
     it 'todos os campos validos' do
       restaurant = Restaurant.new(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
                                   comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 

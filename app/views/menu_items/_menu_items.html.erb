@@ -1,0 +1,10 @@
+<% if items.any? %>
+  <% items.each do |item| %>
+    <div>
+      <p><%= link_to item.menu_item.name, restaurant_item_path(restaurant, item) %></p>
+      <% if item.photo.present? %>
+        <p><%= image_tag(item.photo)%></p>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

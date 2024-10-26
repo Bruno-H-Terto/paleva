@@ -14,18 +14,14 @@
       </div>
   </div>
   <div id="menu-list">
-    <%= link_to 'Registrar opção de prato', new_restaurant_dish_path(@restaurant) %>
     <div>
-      <% if @restaurant.dishes.any? %>
-        <% @restaurant.dishes.each do |dish| %>
-          <div>
-            <p><%= link_to dish.menu_item.name, restaurant_dish_path(@restaurant, dish) %></p>
-            <% if dish.photo.present? %>
-              <p><%= image_tag(dish.photo)%></p>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
+      <%= link_to 'Registrar opção de prato', new_restaurant_dish_path(@restaurant) %>
+      <%= render  'menu_items/menu_items', items: @restaurant.dishes, restaurant: @restaurant %>
+    </div>
+
+    <div>
+      <%= link_to 'Registrar opção de bebida', new_restaurant_beverage_path(@restaurant) %>
+      <%= render  'menu_items/menu_items', items: @restaurant.beverages, restaurant: @restaurant %>
     </div>
   </div>
 </section>

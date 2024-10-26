@@ -9,6 +9,8 @@ pt-BR:
   invalid_update: "não é permitido altarar o campo %{name}"
   open: 'Aberto'
   closed: 'Fechado'
+  dish: 'Prato'
+  beverage: 'Bebida'
   restaurant:
     registration:
       success: 'Restaurante registrado com sucesso'

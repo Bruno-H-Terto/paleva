@@ -1,20 +1,20 @@
-class DishesController < ApplicationController
+class BeveragesController < ApplicationController
   before_action :fetch_restaurant
-  before_action :fetch_dish, only: %i[show]
+  before_action :fetch_beverage, only: %i[show]
 
   def show; end
 
   def new
-    @dish = @restaurant.dishes.build
-    @dish.build_menu_item
+    @beverage = @restaurant.beverages.build
+    @beverage.build_menu_item
   end
 
   def create
-    @dish = @restaurant.dishes.build(photo_params)
-    @dish.build_menu_item(dish_params)
+    @beverage = @restaurant.beverages.build(photo_params)
+    @beverage.build_menu_item(beverage_params)
 
-    if @dish.save
-      redirect_to restaurant_path(@restaurant), notice: "#{@dish.menu_item.name} registrado com sucesso"
+    if @beverage.save
+      redirect_to restaurant_path(@restaurant), notice: "#{@beverage.menu_item.name} registrado com sucesso"
     else
       flash.now[:alert] = 'Não foi possível concluir a operação'
       render :new, status: :unprocessable_entity
@@ -23,8 +23,8 @@ class DishesController < ApplicationController
   
   private
 
-  def fetch_dish
-    @dish = Dish.find(params[:id])
+  def fetch_beverage
+    @beverage = Beverage.find(params[:id])
     owner = current_restaurant_owner
     @restaurant = fetch_restaurant
     if @restaurant.restaurant_owner != owner
@@ -36,14 +36,14 @@ class DishesController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
-  def dish_params
-    params.require(:dish).permit(
+  def beverage_params
+    params.require(:beverage).permit(
       :name, :description, :calories
     )
   end
 
   def photo_params
-    params.require(:dish).permit(
+    params.require(:beverage).permit(
       :photo
     )
   end

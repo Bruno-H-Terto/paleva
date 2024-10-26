@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
   has_many :business_hours
   accepts_nested_attributes_for :business_hours
   has_many :dishes
+  has_many :beverages
 
   validates :name, :brand_name, :comercial_phone, :register_number,
             :email, presence: true
@@ -15,7 +16,7 @@ class Restaurant < ApplicationRecord
     message: 'deve ser em um formato válido'
   }
 
-  validates_with PhoneValidator, field: :comercial_phone
+  validates_with PhoneValidator, field: :comercial_phone, if: -> {comercial_phone.present?}
   validates_with TaxIdValidator, lenght: 14, field: :register_number
 
   before_validation :generate_code, on: :create

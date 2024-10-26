@@ -7,6 +7,8 @@ RSpec.describe Address, type: :model do
     password: 'treina_dev13') 
   }
   context '#valid?' do
+    it { should belong_to(:user) }
+    
     it 'todos os campos válidos' do
       restaurant = Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
                                   comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 
