@@ -9,6 +9,8 @@ pt-BR:
         other: 'Restaurantes'
       address: 'Endereço'
       business_hour: 'Horário de funcionamento'
+      menu_item: 'Item do menu'
+      dish: 'Prato'
     attributes:
       restaurant_owner:
         individual_tax_id: 'CPF'
@@ -40,6 +42,8 @@ pt-BR:
         thursday: 'Quinta-feira'
         friday: 'Sexta-feira'
         saturday: 'Sábado'
+      menu_item:
+        name: 'Nome'
   statuses:
     open: "Aberto"
     closed: "Fechado"

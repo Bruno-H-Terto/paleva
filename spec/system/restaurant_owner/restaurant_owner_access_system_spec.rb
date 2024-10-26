@@ -33,6 +33,8 @@ describe 'Usuário acessa o sistema' do
       fill_in 'Confirme sua senha', with: 'treina_dev13'
       click_on 'Criar conta'
 
+      expect(Restaurant.count).to eq 0
+      expect(Address.count).to eq 0
       expect(page).to have_css '.alert', text: 'Não foi possível salvar proprietário: 4 erros'
       expect(page).to have_content 'CPF não pode ficar em branco'
       expect(page).to have_content 'CPF não é um registro válido'

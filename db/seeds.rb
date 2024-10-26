@@ -8,6 +8,13 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-RestaurantOwner.create!(individual_tax_id: '91348691077', 
+owner = RestaurantOwner.create!(individual_tax_id: '91348691077', 
                   name: 'Ruby Dev', surname: 'TDD', email: 'td13@ruby.com',
                   password: 'treina_dev13') 
+
+restaurant = Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
+                                comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 
+                                restaurant_owner: owner)
+
+restaurant.create_address!(street: 'Av. TDD Ruby on Rails', number: 42, district: 'Rubista', city: 'Condado',
+                           state: 'MG', zip_code: '36000-000', complement: 'Loja 1')

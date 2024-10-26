@@ -5,8 +5,8 @@ class RestaurantOwner < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :restaurant
-
   has_many :business_hours
+
   validates :individual_tax_id, presence: true, uniqueness: true
   validates :name, :surname, presence: true
   validates_with TaxIdValidator, lenght: 11, field: :individual_tax_id, if: :restaurant_is_nil

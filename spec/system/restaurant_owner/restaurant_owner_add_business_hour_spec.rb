@@ -67,6 +67,7 @@ describe 'Usuário acessa área do Proprietário' do
       fill_in_hours_for_day('wednesday', '', '17:00', 'check')
       click_on 'Cadastrar'
 
+      expect(BusinessHour.count).to eq 0
       expect(page).to have_content 'Não foi possível incluir seus horários, revise os campos abaixo:'
       expect(page).to have_content 'Segunda-feira - horários inválidos'
       expect(page).to have_content 'Terça-feira - horários inválidos'

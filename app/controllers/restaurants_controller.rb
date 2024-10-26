@@ -12,7 +12,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = @owner.create_restaurant(restaurant_params)
-    @business_hours = []
+
     if @restaurant.save
       return redirect_to restaurant_path(@restaurant), notice: t('restaurant.registration.success')
     end

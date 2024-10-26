@@ -1,9 +1,10 @@
 class Restaurant < ApplicationRecord
-  has_one :address, as: :user, class_name: 'Address'
-  belongs_to :restaurant_owner
+  has_one :address, as: :user
   accepts_nested_attributes_for :address
+  belongs_to :restaurant_owner
   has_many :business_hours
   accepts_nested_attributes_for :business_hours
+  has_many :dishes
 
   validates :name, :brand_name, :comercial_phone, :register_number,
             :email, presence: true
