@@ -1,7 +1,7 @@
 <%= render 'restaurant', restaurant: @restaurant %>
 
-<section>
-  <div id="business-hours">
+<section class="container mx-auto">
+  <div id="business-hours" class="h-screen">
       <div>
         <% if @restaurant.business_hours.any? %>
           <p>Horário de funcionamento</p>
@@ -13,13 +13,13 @@
         <% end %>
       </div>
   </div>
-  <div id="menu-list">
-    <div>
+  <div id="menu-list" class="flex flex-row h-screen">
+    <div class="basis-1/2">
       <%= link_to 'Registrar opção de prato', new_restaurant_dish_path(@restaurant) %>
       <%= render  'menu_items/menu_items', items: @restaurant.dishes, restaurant: @restaurant %>
     </div>
 
-    <div>
+    <div class="basis-1/2 mx-auto">
       <%= link_to 'Registrar opção de bebida', new_restaurant_beverage_path(@restaurant) %>
       <%= render  'menu_items/menu_items', items: @restaurant.beverages, restaurant: @restaurant %>
     </div>

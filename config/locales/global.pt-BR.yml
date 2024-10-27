@@ -6,7 +6,7 @@ pt-BR:
   invalid_registration: 'não é um registro válido'
   out_range_length: "número de digitos incorretos: digitado %{number}"
   not_is_a_number: 'digite apenas números'
-  invalid_update: "não é permitido altarar o campo %{name}"
+  invalid_update: "não é permitido alterar o campo %{name}"
   open: 'Aberto'
   closed: 'Fechado'
   dish: 'Prato'
@@ -15,6 +15,9 @@ pt-BR:
     registration:
       success: 'Restaurante registrado com sucesso'
       failure: 'Não foi possível registrar o Restaurante'
+    update:
+      success: 'Restaurante atualizado com sucesso'
+      failure: 'Não foi possível atualizar o Restaurante'
   links:
     restaurant_owner_log_in: 'Sou Proprietário'
     log_in: 'Acesse sua conta'

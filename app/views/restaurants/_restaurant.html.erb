@@ -1,7 +1,7 @@
 <div><%= restaurant.name %> - <%= restaurant.code %></div>
 
 <table>
-  <p>Editar</p>
+  <p><%= link_to 'Editar dados do Restaurante', edit_restaurant_path(restaurant) %></p>
   <caption>Informações</caption>
   <tbody>
     <tr>

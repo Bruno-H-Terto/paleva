@@ -158,5 +158,28 @@ RSpec.describe Restaurant, type: :model do
 
       expect(restaurant.code).to eq 'ABCD1234'
     end
+
+    it 'código permance o mesmo após update' do
+      restaurant = Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
+                                  comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 
+                                  restaurant_owner: owner)
+
+      restaurant.update(name: 'TDD com Ruby on Rails')
+
+      expect(restaurant.code_changed?).to eq false
+    end
+
+    it 'código não pode ser alterado uma vez criado' do
+      restaurant = Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
+                                  comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 
+                                  restaurant_owner: owner)
+  
+      previous_code = restaurant.code
+      new_code = '56789ABCD'
+      restaurant.update(code: new_code)
+
+      expect(restaurant.code_changed?).to eq false
+      expect(restaurant.code).to eq previous_code
+    end
   end
 end

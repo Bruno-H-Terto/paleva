@@ -20,11 +20,18 @@ class Restaurant < ApplicationRecord
   validates_with TaxIdValidator, lenght: 14, field: :register_number
 
   before_validation :generate_code, on: :create
-
+  before_validation :code_must_be_unchanged, on: :update
 
   protected
 
   def generate_code
     self.code = SecureRandom.alphanumeric(6).upcase
+  end
+
+  def code_must_be_unchanged
+    if code_changed?
+      restore_code!
+      return errors.add(:code, I18n.t('invalid_update', name: :code))
+    end
   end
 end

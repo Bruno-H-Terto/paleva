@@ -10,7 +10,7 @@ describe 'Proprietário acessa tela de registro' do
 
     it 'e cadastra seu restaurante' do
       login_as owner, scope: :restaurant_owner
-      visit new_restaurant_path
+      visit root_path
       fill_in 'Nome', with: 'Entregas TD13'
       fill_in 'Razão social', with: 'TD & Devs Ruby LTDA'
       fill_in 'CNPJ', with: '89078820000100'
@@ -23,12 +23,12 @@ describe 'Proprietário acessa tela de registro' do
       fill_in 'Estado', with: 'MG'
       fill_in 'CEP', with: '36000-000'
       fill_in 'Complemento', with: 'Loja 1'
-      click_on 'Cadastrar'
+      click_on 'Criar Restaurante'
 
       expect(page).to have_content 'Restaurante registrado com sucesso'
       expect(page).to have_css 'nav', text: 'Ruby Dev - td13@ruby.com'
       expect(page).to have_content "Entregas TD13 - #{Restaurant.last.code}"
-      expect(page).to have_content 'Av. TDD Ruby on Rails'
+      expect(page).to have_content 'Av. TDD Ruby on Rails, 42'
       expect(page).to have_content 'Loja 1'
       expect(page).to have_content 'Rubista'
       expect(page).to have_content 'Condado, MG'
@@ -51,7 +51,7 @@ describe 'Proprietário acessa tela de registro' do
         fill_in 'Estado', with: 'MG'
         fill_in 'CEP', with: '3600-000'
         fill_in 'Complemento', with: 'Loja 1'
-        click_on 'Cadastrar'
+        click_on 'Criar Restaurante'
 
         expect(page).to have_content 'Não foi possível registrar o Restaurante'
         expect(Restaurant.count).to eq 0
@@ -73,7 +73,7 @@ describe 'Proprietário acessa tela de registro' do
         fill_in 'Estado', with: 'MG'
         fill_in 'CEP', with: '3600-000'
         fill_in 'Complemento', with: 'Loja 1'
-        click_on 'Cadastrar'
+        click_on 'Criar Restaurante'
 
         expect(page).to have_content 'Não foi possível registrar o Restaurante'
       end
