@@ -1,7 +1,7 @@
 class BeveragesController < ApplicationController
   before_action :authenticate_restaurant_owner!
   before_action :fetch_restaurant
-  before_action :fetch_beverage, only: %i[show edit update]
+  before_action :fetch_beverage, only: %i[show edit update destroy]
 
   def show; end
 
@@ -31,6 +31,15 @@ class BeveragesController < ApplicationController
 
     flash.now[:alert] = 'Não foi possível atualizar a Bebida'
     render :edit, status: :unprocessable_entity
+  end
+
+  def destroy
+    if @beverage.destroy
+      return redirect_to restaurant_path(@restaurant), notice: 'Bebida deletada com sucesso'
+    end
+
+    flash.now[:alert] = 'Não foi possível concluir a operação'
+    render :show, status: :unprocessable_entity
   end
   
   private
