@@ -19,7 +19,7 @@
 
       <div>
         <%= business_hour_form.label :status %>
-        <%= business_hour_form.check_box :status %>
+        <%= business_hour_form.select :status, BusinessHour.statuses.keys.map { |status| ["#{I18n.t status}", status] } %>
       </div>
     </div>
   <% end %>

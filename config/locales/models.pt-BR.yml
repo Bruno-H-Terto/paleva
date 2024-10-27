@@ -32,9 +32,10 @@ pt-BR:
         zip_code: 'CEP'
         complement: 'Complemento'
       business_hour:
-        status: "Funcionamento"
-        open_time: "Hora de Abertura"
-        close_time: "Encerramento"
+        status: 'Funcionamento'
+        open: 'Aberto'
+        open_time: 'Hora de Abertura'
+        close_time: 'Encerramento'
         day_of_week: 'Dia da semana'
         sunday: 'Domingo'
         monday: 'Segunda-feira'

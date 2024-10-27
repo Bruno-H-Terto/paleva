@@ -1,0 +1,24 @@
+<%= form_with model: @business_hour, url: restaurant_business_hour_path(@restaurant, @business_hour), data: {turbo: false} do |form| %>
+  <div>
+    <%= BusinessHour.human_attribute_name @business_hour.day_of_week %>
+  </div>
+
+  <div>
+    <%= form.label :open_time %>
+    <%= form.time_field :open_time %>
+  </div>
+
+  <div>
+    <%= form.label :close_time %>
+    <%= form.time_field :close_time %>
+  </div>
+
+  <div>
+    <%= form.label :status %>
+    <%= form.select :status, BusinessHour.statuses.keys.map { |status| ["#{I18n.t status}", status] } %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -6,13 +6,16 @@
         <% if @restaurant.business_hours.any? %>
           <p>Horário de funcionamento</p>
           <% @restaurant.business_hours.each do |business_hour| %>
-            <p><%= business_hour.display_hours%> - <%= link_to 'Editar', edit_restaurant_business_hour_path(@restaurant, business_hour) %></p>
+            <%= link_to edit_restaurant_business_hour_path(@restaurant, business_hour) do %>
+              <p><%= business_hour.display_hours%></p>
+            <% end %>
           <% end %>
         <% else %>
           <%= link_to 'Cadastrar horário de funcionamento', new_restaurant_business_hour_path(@restaurant) %>
         <% end %>
       </div>
   </div>
+
   <div id="menu-list" class="flex flex-row h-screen">
     <div class="basis-1/2">
       <%= link_to 'Registrar opção de prato', new_restaurant_dish_path(@restaurant) %>
