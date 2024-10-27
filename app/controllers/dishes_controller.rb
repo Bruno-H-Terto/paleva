@@ -1,7 +1,7 @@
 class DishesController < ApplicationController
   before_action :authenticate_restaurant_owner!
   before_action :fetch_restaurant
-  before_action :fetch_dish, only: %i[show]
+  before_action :fetch_dish, only: %i[show edit update]
 
   def show; end
 
@@ -21,7 +21,18 @@ class DishesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit; end
   
+  def update
+    if @dish.menu_item.update(dish_params) && @dish.update(photo_params)
+      return redirect_to restaurant_dish_path(@restaurant, @dish), notice: 'Prato atualizado com sucesso'
+    end
+
+    flash.now[:alert] = 'Não foi possível atualizar o Prato'
+    render :edit, status: :unprocessable_entity
+  end
+
   private
 
   def fetch_dish

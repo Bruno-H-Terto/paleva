@@ -49,11 +49,12 @@ describe 'Proprietário acessa tela de registro' do
         fill_in 'Bairro', with: 'Rubista'
         fill_in 'Cidade', with: 'Condado'
         fill_in 'Estado', with: 'MG'
-        fill_in 'CEP', with: '3600-000'
+        fill_in 'CEP', with: '36000-000'
         fill_in 'Complemento', with: 'Loja 1'
         click_on 'Criar Restaurante'
 
         expect(page).to have_content 'Não foi possível registrar o Restaurante'
+        expect(page).to have_content 'Número não pode ficar em branco'
         expect(Restaurant.count).to eq 0
         expect(Address.count).to eq 0
       end
@@ -71,11 +72,12 @@ describe 'Proprietário acessa tela de registro' do
         fill_in 'Bairro', with: 'Rubista'
         fill_in 'Cidade', with: 'Condado'
         fill_in 'Estado', with: 'MG'
-        fill_in 'CEP', with: '3600-000'
+        fill_in 'CEP', with: '36000-000'
         fill_in 'Complemento', with: 'Loja 1'
         click_on 'Criar Restaurante'
 
         expect(page).to have_content 'Não foi possível registrar o Restaurante'
+        expect(page).to have_content 'E-mail deve ser em um formato válido'
       end
       
       it 'ao tentar registrar mais de um Restaurante' do

@@ -23,7 +23,7 @@ describe 'Proprietário cadastra opções no menu' do
                                    trigo é usada apenas para dar consistência à massa.  '
       fill_in 'Calorias', with: '29,7'
       attach_file 'Foto demonstrativa', Rails.root.join('spec', 'support', 'bolinho_de_carne_moida.jpg')
-      click_on 'Cadastrar'
+      click_on 'Criar Prato'
 
       expect(current_path).to eq restaurant_path(restaurant)
       expect(page).to have_content 'Bolinho de carne moída simples registrado com sucesso'
@@ -112,7 +112,7 @@ describe 'Proprietário cadastra opções no menu' do
       fill_in 'Descrição', with: 'Um bolinho de carne moída simples, bem temperado e carnudo - a farinha de
                                    trigo é usada apenas para dar consistência à massa.  '
       fill_in 'Calorias', with: '29,7'
-      click_on 'Cadastrar'
+      click_on 'Criar Prato'
 
       expect(page).to have_content 'Não foi possível concluir a operação'
       expect(page).to have_content 'Nome não pode ficar em branco'
@@ -134,7 +134,7 @@ describe 'Proprietário cadastra opções no menu' do
       fill_in 'Nome', with: 'Vinho tinto Cabernet Sauvignon 750ml'
       fill_in 'Descrição', with: 'Vinho tinto de Uvas Cabernet Sauvignon, do Vale Central, Chile. Garrafa de 750ml. Teor alcoólico de 13,5%'
       fill_in 'Calorias', with: '580'
-      click_on 'Cadastrar'
+      click_on 'Criar Bebida'
   
       expect(current_path).to eq restaurant_path(restaurant)
       expect(page).to have_content 'Vinho tinto Cabernet Sauvignon 750ml registrado com sucesso'
@@ -204,6 +204,7 @@ describe 'Proprietário cadastra opções no menu' do
       visit restaurant_dish_path(first_restaurant, first_restaurant_drink)
   
       expect(page).to have_content 'Acesso negado - Não é permito visualizar dados de outro Restaurante'
+      expect(page).not_to have_content 'Rubistas'
     end
   
     it 'e falha ao não incluir informações obrigatórias' do
@@ -220,7 +221,7 @@ describe 'Proprietário cadastra opções no menu' do
       fill_in 'Nome', with: ''
       fill_in 'Descrição', with: 'Um vinho tinto de Uvas Cabernet Sauvignon, bem encorpado e saboroso.'
       fill_in 'Calorias', with: '29,7'
-      click_on 'Cadastrar'
+      click_on 'Criar Bebida'
   
       expect(page).to have_content 'Não foi possível concluir a operação'
       expect(page).to have_content 'Nome não pode ficar em branco'

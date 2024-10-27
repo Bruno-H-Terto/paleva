@@ -1,3 +1,5 @@
 <%= render  'shared/errors', object: @dish %>
 
-<%= render  'menu_items/form', item: @dish, restaurant: @restaurant %>
+<%= form_with model: @dish, url: restaurant_items_path(@dish, @restaurant), data: {turbo: false}, method: :post do |form| %>
+  <%= render  'menu_items/form', form: form, item: @dish, restaurant: @restaurant %>
+<% end %>

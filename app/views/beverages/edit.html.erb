@@ -1,0 +1,5 @@
+<%= render  'shared/errors', object: @beverage.menu_item %>
+
+<%= form_with model: @beverage, url: restaurant_beverage_path(@beverage, @restaurant), data: {turbo: false} do |form| %>
+  <%= render  'menu_items/form',form: form, item: @beverage, restaurant: @restaurant %>
+<% end %>

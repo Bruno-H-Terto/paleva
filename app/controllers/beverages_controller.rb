@@ -1,7 +1,7 @@
 class BeveragesController < ApplicationController
   before_action :authenticate_restaurant_owner!
   before_action :fetch_restaurant
-  before_action :fetch_beverage, only: %i[show]
+  before_action :fetch_beverage, only: %i[show edit update]
 
   def show; end
 
@@ -20,6 +20,17 @@ class BeveragesController < ApplicationController
       flash.now[:alert] = 'Não foi possível concluir a operação'
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit; end
+  
+  def update
+    if @beverage.menu_item.update(beverage_params) && @beverage.update(photo_params)
+      return redirect_to restaurant_beverage_path(@restaurant, @beverage), notice: 'Bebida atualizado com sucesso'
+    end
+
+    flash.now[:alert] = 'Não foi possível atualizar a Bebida'
+    render :edit, status: :unprocessable_entity
   end
   
   private

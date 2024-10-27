@@ -16,12 +16,12 @@
   <div id="menu-list" class="flex flex-row h-screen">
     <div class="basis-1/2">
       <%= link_to 'Registrar opção de prato', new_restaurant_dish_path(@restaurant) %>
-      <%= render  'menu_items/menu_items', items: @restaurant.dishes, restaurant: @restaurant %>
+      <%= render  'menu_items/list_items', items: @restaurant.dishes, restaurant: @restaurant %>
     </div>
 
     <div class="basis-1/2 mx-auto">
       <%= link_to 'Registrar opção de bebida', new_restaurant_beverage_path(@restaurant) %>
-      <%= render  'menu_items/menu_items', items: @restaurant.beverages, restaurant: @restaurant %>
+      <%= render  'menu_items/list_items', items: @restaurant.beverages, restaurant: @restaurant %>
     </div>
   </div>
 </section>

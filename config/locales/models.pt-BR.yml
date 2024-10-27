@@ -11,6 +11,7 @@ pt-BR:
       business_hour: 'Horário de funcionamento'
       menu_item: 'Item do menu'
       dish: 'Prato'
+      beverage: 'Bebida'
     attributes:
       restaurant_owner:
         individual_tax_id: 'CPF'

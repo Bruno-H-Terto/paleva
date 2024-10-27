@@ -84,6 +84,10 @@ describe 'Proprietário edita seu Restaurante' do
 
       expect(current_path).to eq restaurant_path(other_restaurant)
       expect(page).to have_content 'Acesso negado - Não é permito visualizar dados de outro Restaurante'
+      expect(page).not_to have_content 'Rubistas'
+      expect(page).not_to have_content 'Rua Passo Largo'
+      expect(page).to have_content 'Toscana Code'
+      expect(page).to have_content 'Av 13 de Brumário'
     end
   end
 end
