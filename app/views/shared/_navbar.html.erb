@@ -9,6 +9,11 @@
             <%# link_to_if current_restaurant_owner.restaurant.present?, 'Dashboard', restaurant_path(current_restaurant_owner.restaurant) %>
           </li>
         </ul>
+        <%= form_with url: search_restaurants_path, method: :get do |form| %>
+          <%= form.label :query, t('query') %>
+          <%= form.text_field :query %>
+          <%= form.submit "Buscar" %>
+        <% end %>
       <% else %>
         <li><%= link_to t('links.restaurant_owner_log_in'), new_restaurant_owner_session_path %></li>
       <% end %>

@@ -6,6 +6,8 @@ class Restaurant < ApplicationRecord
   accepts_nested_attributes_for :business_hours
   has_many :dishes
   has_many :beverages
+  has_many :menu_items, through: :dishes
+  has_many :menu_items, through: :beverages
 
   validates :name, :brand_name, :comercial_phone, :register_number,
             :email, presence: true
@@ -21,6 +23,17 @@ class Restaurant < ApplicationRecord
 
   before_validation :generate_code, on: :create
   before_validation :code_must_be_unchanged, on: :update
+
+  def search_menu_items(query)
+    dishes_with_query = dishes.joins(:menu_item).where(
+      "menu_items.name LIKE ? OR menu_items.description LIKE ?", "%#{query}%", "%#{query}%"
+      )
+    beverages_with_query = beverages.joins(:menu_item).where(
+      "menu_items.name LIKE ? OR menu_items.description LIKE ?", "%#{query}%", "%#{query}%"
+      )
+    
+    dishes_with_query + beverages_with_query
+  end
 
   protected
 

@@ -11,6 +11,7 @@ pt-BR:
   closed: 'Fechado'
   dish: 'Prato'
   beverage: 'Bebida'
+  query: 'Pesquisar'
   restaurant:
     registration:
       success: 'Restaurante registrado com sucesso'

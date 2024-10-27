@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :restaurants, only: %i[new create show edit update] do
+    get 'search', on: :collection
     resources :address, only: %i[edit update]
     resources :business_hours, only: %i[new create edit update], on: :member
     resources :dishes, only: %i[new create show edit update destroy], on: :member

@@ -35,6 +35,12 @@ class RestaurantsController < ApplicationController
     render :new, status: :unprocessable_entity
   end
 
+  def search
+    @restaurant = current_restaurant_owner.restaurant
+    query = params[:query]
+    @results = @restaurant.search_menu_items(query)
+  end
+
   private
 
   def fetch_restaurant
