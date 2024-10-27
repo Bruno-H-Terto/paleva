@@ -23,12 +23,12 @@ describe 'Proprietário atualiza seu horário de funcionamento' do
     visit restaurant_path(restaurant)
     click_on 'Segunda-feira de 09:00 às 17:00 (Aberto)'
     select 'Aberto', from: 'Funcionamento'
-    fill_in 'Hora de Abertura', with: '12:00'
+    fill_in 'Hora de Abertura', with: '12:35'
     fill_in 'Encerramento', with: '18:00'
     click_on 'Atualizar Horário'
 
     expect(page).to have_content 'Horário atualizado com sucesso'
-    expect(page).to have_content 'Segunda-feira de 12:00 às 18:00 (Aberto)'
+    expect(page).to have_content 'Segunda-feira de 12:35 às 18:00 (Aberto)'
     expect(page).to have_content 'Terça-feira de 09:00 às 17:00 (Aberto)'
     expect(page).to have_content 'Quarta-feira de 09:00 às 17:00 (Aberto)'
     expect(page).to have_content 'Quinta-feira de 09:00 às 17:00 (Aberto)'

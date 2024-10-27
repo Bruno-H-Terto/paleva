@@ -9,12 +9,12 @@
 
       <div>
         <%= business_hour_form.label :open_time %>
-        <%= business_hour_form.time_field :open_time %>
+        <%= business_hour_form.time_field :open_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
       </div>
 
       <div>
         <%= business_hour_form.label :close_time %>
-        <%= business_hour_form.time_field :close_time %>
+        <%= business_hour_form.time_field :close_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
       </div>
 
       <div>

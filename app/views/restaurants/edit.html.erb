@@ -1,32 +1,32 @@
-<%= render 'shared/errors', object: @restaurant %>
+<%= render 'shared/errors', object: @restaurant, class: 'flex items-center space-x-2' %>
 
 <%= form_with model: @restaurant, data: {turbo: false} do |form| %>
   <div>
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'border p-2 rounded' %>
   </div>
 
   <div>
     <%= form.label :brand_name %>
-    <%= form.text_field :brand_name %>
+    <%= form.text_field :brand_name, class: 'border p-2 rounded' %>
   </div>
 
   <div>
     <%= form.label :register_number %>
-    <%= form.text_field :register_number %>
+    <%= form.text_field :register_number, class: 'border p-2 rounded' %>
   </div>
 
   <div>
     <%= form.label :comercial_phone %>
-    <%= form.text_field :comercial_phone %>
+    <%= form.text_field :comercial_phone, class: 'border p-2 rounded' %>
   </div>
 
   <div>
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: 'border p-2 rounded' %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn-primary' %>
   </div>
 <% end %>

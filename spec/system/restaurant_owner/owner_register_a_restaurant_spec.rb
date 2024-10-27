@@ -25,6 +25,7 @@ describe 'Proprietário acessa tela de registro' do
       fill_in 'Complemento', with: 'Loja 1'
       click_on 'Criar Restaurante'
 
+      expect(current_path).to eq restaurant_path(Restaurant.last)
       expect(page).to have_content 'Restaurante registrado com sucesso'
       expect(page).to have_css 'nav', text: 'Ruby Dev - td13@ruby.com'
       expect(page).to have_content "Entregas TD13 - #{Restaurant.last.code}"
@@ -38,7 +39,7 @@ describe 'Proprietário acessa tela de registro' do
     context 'e falha' do
       it 'por ter campos ausentes' do
         login_as owner, scope: :restaurant_owner
-        visit new_restaurant_path
+        visit root_path
         fill_in 'Nome', with: ''
         fill_in 'Razão social', with: 'TD & Devs Ruby LTDA'
         fill_in 'CNPJ', with: '89078820000100'
@@ -61,7 +62,7 @@ describe 'Proprietário acessa tela de registro' do
 
       it 'ao não passar um formato de email válido' do
         login_as owner, scope: :restaurant_owner
-        visit new_restaurant_path
+        visit root_path
         fill_in 'Nome', with: 'Entregas TD13'
         fill_in 'Razão social', with: 'TD & Devs Ruby LTDA'
         fill_in 'CNPJ', with: '89078820000100'
@@ -81,14 +82,20 @@ describe 'Proprietário acessa tela de registro' do
       end
       
       it 'ao tentar registrar mais de um Restaurante' do
-        Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Workd LTDA', register_number: '89078820000100',
+        restaurant = Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Workd LTDA', register_number: '89078820000100',
                           comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 
                           restaurant_owner: owner)
+        Address.create!(street: 'Rua Passo Largo', number: '42', district: 'Bolsão',
+                          city: 'Gotham City', state: 'MG', zip_code: '36000-000', complement: 'Caverna',
+                          user: restaurant, user_type: 'Restaurant')
 
         login_as owner, scope: :restaurant_owner
-        visit new_restaurant_path
+        visit root_path
+        click_on 'Meu Restaurante'
 
-        expect(page).to have_content 'Restaurante já cadastrado'
+        expect(page).not_to have_content 'Criar Restaurante'
+        expect(page).not_to have_field 'Razão social'
+        expect(page).not_to have_field 'CNPJ'
       end
     end
   end

@@ -16,7 +16,8 @@ describe 'Proprietário edita seu Restaurante' do
                                   user: restaurant, user_type: 'Restaurant')
 
       login_as owner, scope: :restaurant_owner
-      visit restaurant_path(restaurant)
+      visit root_path
+      click_on 'Meu Restaurante'
       click_on 'Editar dados do Restaurante'
       fill_in 'Nome', with: 'Entregas TD13 & CIA'
       fill_in 'Razão social', with: 'TD & Devs Ruby LTDA'

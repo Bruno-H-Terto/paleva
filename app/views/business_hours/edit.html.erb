@@ -5,12 +5,12 @@
 
   <div>
     <%= form.label :open_time %>
-    <%= form.time_field :open_time %>
+    <%= form.time_field :open_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
   </div>
 
   <div>
     <%= form.label :close_time %>
-    <%= form.time_field :close_time %>
+    <%= form.time_field :close_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
   </div>
 
   <div>

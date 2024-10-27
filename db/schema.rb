@@ -64,8 +64,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_26_060946) do
   create_table "business_hours", force: :cascade do |t|
     t.integer "day_of_week", null: false
     t.integer "status", default: 0
-    t.string "open_time"
-    t.string "close_time"
+    t.time "open_time"
+    t.time "close_time"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

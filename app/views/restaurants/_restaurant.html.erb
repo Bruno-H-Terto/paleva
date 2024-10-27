@@ -1,28 +1,24 @@
-<div><%= restaurant.name %> - <%= restaurant.code %></div>
+<div class="mb-4">
+  <h2 class="text-xl font-bold"><%= restaurant.name %> - <%= restaurant.code %></h2>
+  <p><%= link_to 'Editar dados do Restaurante', edit_restaurant_path(restaurant), class: 'text-blue-500 hover:underline' %></p>
+</div>
 
-<table>
-  <p><%= link_to 'Editar dados do Restaurante', edit_restaurant_path(restaurant) %></p>
-  <caption>Informações</caption>
-  <%= link_to 'Editar Endereço', edit_restaurant_address_path(restaurant, restaurant.address) %>
-  <tbody>
-    <thead>
-      <tr>
-        <th>
-          Endereço
-        </th>
-      </tr>
-    </thead>
-    <tr>
-      <td>
-        <address><%= restaurant.address.street %>, <%= restaurant.address.number %></address>
-        <% if restaurant.address.complement.present? %>
-          <address><%= restaurant.address.complement %></address>
-        <% end %>
-        <address><%= restaurant.address.district %></address>
-        <address><%= restaurant.address.city %>, <%= restaurant.address.state %></address>
-        <address><%= restaurant.address.zip_code %></address>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="bg-white grid grid-cols-3">
+  <h3 class="text-lg font-semibold mb-2">Informações</h3>
 
+  <div class="mb-2">
+    <h4 class="font-semibold">Endereço</h4>
+    <address class="not-italic text-gray-700">
+      <%= restaurant.address.street %>, <%= restaurant.address.number %>
+      <% if restaurant.address.complement.present? %>
+        <br><%= restaurant.address.complement %>
+      <% end %>
+      <br><%= restaurant.address.district %>
+      <br><%= restaurant.address.city %>, <%= restaurant.address.state %> - <%= restaurant.address.zip_code %>
+    </address>
+  </div>
+
+  <p class="mt-4">
+    <%= link_to 'Editar Endereço', edit_restaurant_address_path(restaurant, restaurant.address), class: 'text-blue-500 hover:underline' %>
+  </p>
+</div>

@@ -78,6 +78,15 @@ describe 'Proprietário busca por itens cadastrados' do
     expect(page).to have_content 'Não existem resultados disponíveis'
   end
 
+  it 'e realiza busca em branco' do
+    login_as owner, scope: :restaurant_owner
+    visit restaurant_path(restaurant)
+    fill_in 'Pesquisar', with: '  '
+    click_on 'Buscar'
+
+    expect(page).to have_content 'Valor de busca inválido'
+  end
+
   it 'e só tem acesso ao do seu próprio Restaurante' do
     new_item_in_menu('dish', 'Carne moída', 'Especial da casa', 30)
     new_item_in_menu('dish', 'Carne mal passada', 'Carne bovina', 100)

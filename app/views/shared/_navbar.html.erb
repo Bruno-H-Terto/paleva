@@ -1,22 +1,24 @@
-<div class="container mx-auto">
-  <nav>
-    <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <% if restaurant_owner_signed_in? %>
-        <h4><%= current_restaurant_owner.name %> - <%= current_restaurant_owner.email %></h4>
-        <ul>
-          <li>
-            <%# link_to_if current_restaurant_owner.restaurant.present?, 'Dashboard', restaurant_path(current_restaurant_owner.restaurant) %>
-          </li>
-        </ul>
-        <%= form_with url: search_restaurants_path, method: :get do |form| %>
-          <%= form.label :query, t('query') %>
-          <%= form.text_field :query %>
-          <%= form.submit "Buscar" %>
+<nav class="flex justify-center space-x-4 px-3 sm:px-4 item-center container">
+  <ul class="flex space-x-4 p-4">
+    <li><%= link_to 'Home', root_path, class: 'font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900' %></li>
+    <% if restaurant_owner_signed_in? %>
+    <div class="container mx-auto flex flex-wrap items-center">
+      <%= image_tag 'user.svg', class: 'img-user' %>
+      <h4 class="font-bold"><%= current_restaurant_owner.name %> - <%= current_restaurant_owner.email %></h4>
+      <%= button_to 'Sair', destroy_restaurant_owner_session_path, method: :delete %>
+    </div>
+      <li>
+        <% unless current_restaurant_owner.restaurant.id.nil? %>
+          <%= link_to 'Meu Restaurante', restaurant_path(current_restaurant_owner.restaurant), class: 'font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900 w-auto' %>
         <% end %>
-      <% else %>
-        <li><%= link_to t('links.restaurant_owner_log_in'), new_restaurant_owner_session_path %></li>
+      </li>
+      <%= form_with url: search_restaurants_path, method: :get, class: 'flex items-center space-x-2' do |form| %>
+        <%= form.label :query, t('query'), class: 'sr-only' %>
+        <%= form.text_field :query, placeholder: 'Buscar...', class: 'border p-2 rounded' %>
+        <%= form.submit "Buscar", class: 'btn-primary' %>
       <% end %>
-    </ul>
-  </nav>
-</div>
+    <% else %>
+      <li><%= link_to t('links.restaurant_owner_log_in'), new_restaurant_owner_session_path, class: 'bg-green-300 border-green-600 border-b p-4 m-4 rounded' %></li>
+    <% end %>
+  </ul>
+</nav>

@@ -38,6 +38,9 @@ class RestaurantsController < ApplicationController
   def search
     @restaurant = current_restaurant_owner.restaurant
     query = params[:query]
+    if query.blank?
+      return redirect_to restaurant_path(@restaurant), alert: 'Valor de busca inválido'
+    end
     @results = @restaurant.search_menu_items(query)
   end
 

@@ -90,4 +90,16 @@ describe 'Usuário acessa o sistema' do
       expect(page).to have_content 'CPF não é um registro válido'
     end
   end
+  
+  it 'e realiza logout' do
+    owner = RestaurantOwner.create!(individual_tax_id: '91348691077', 
+            name: 'Ruby Dev', surname: 'TDD', email: 'td13@ruby.com',
+            password: 'treina_dev13')
+    
+    login_as owner, scope: :restaurant_owner
+    visit root_path
+    click_on 'Sair'
+
+    expect(page).to have_content 'Logout efetuado com sucesso.'
+  end
 end

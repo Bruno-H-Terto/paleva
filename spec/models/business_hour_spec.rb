@@ -33,6 +33,27 @@ RSpec.describe BusinessHour, type: :model do
       expect(second_business_hour).not_to be_valid
     end  
     
+    it 'hora de abertura deve ter formato válido' do
+      business_hour = BusinessHour.new(day_of_week: :monday, status: :open, open_time: 'ABC',
+                                      close_time: '12:00', restaurant: restaurant)
+
+      expect(business_hour).not_to be_valid
+    end
+
+    it 'hora de encerramento deve ter formato válido' do
+      business_hour = BusinessHour.new(day_of_week: :monday, status: :open, open_time: '07:00',
+                                      close_time: 'AB:AD', restaurant: restaurant)
+
+      expect(business_hour).not_to be_valid
+    end
+
+    it 'hora de encerramento deve ser posterior a de abertura' do
+        business_hour = BusinessHour.new(day_of_week: :monday, status: :closed, open_time: '11:00',
+                                        close_time: '10:00', restaurant: restaurant)
+
+        expect(business_hour).not_to be_valid
+    end
+
     context '.open' do
       it 'hora de abertura é obrigatório' do
         business_hour = BusinessHour.new(day_of_week: :monday, status: :open, open_time: '',
@@ -46,7 +67,7 @@ RSpec.describe BusinessHour, type: :model do
                                         close_time: '', restaurant: restaurant)
 
         expect(business_hour).not_to be_valid
-      end    
+      end
     end
 
     context '.closed' do
