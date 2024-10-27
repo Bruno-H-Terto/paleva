@@ -1,0 +1,42 @@
+<%= render 'shared/errors', object: @address %>
+
+<%= form_with model: @address, url: restaurant_address_path(@restaurant, @address), data: {turbo: false} do |form| %>
+  <div>
+    <%= form.label :zip_code %>
+    <%= form.text_field :zip_code %>
+  </div>
+
+  <div>
+    <%= form.label :street %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div>
+    <%= form.label :number %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div>
+    <%= form.label :district %>
+    <%= form.text_field :district %>
+  </div>
+
+  <div>
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :complement %>
+    <%= form.text_field :complement %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

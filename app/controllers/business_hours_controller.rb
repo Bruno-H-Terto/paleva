@@ -1,4 +1,5 @@
 class BusinessHoursController < ApplicationController
+  before_action :authenticate_restaurant_owner!
   before_action :fetch_restaurant
 
   def new

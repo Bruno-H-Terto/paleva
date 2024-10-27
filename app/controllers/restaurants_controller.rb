@@ -37,10 +37,6 @@ class RestaurantsController < ApplicationController
 
   private
 
-  def fetch_restaurant_owner
-    @owner = current_restaurant_owner
-  end
-
   def fetch_restaurant
     owner = fetch_restaurant_owner
     @restaurant = Restaurant.find(params[:id])

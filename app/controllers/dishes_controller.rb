@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+  before_action :authenticate_restaurant_owner!
   before_action :fetch_restaurant
   before_action :fetch_dish, only: %i[show]
 

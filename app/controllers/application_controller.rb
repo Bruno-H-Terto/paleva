@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
       redirect_to new_restaurant_path, alert: 'Por favor, conclua seu cadastro'
     end
   end
+
+  def fetch_restaurant_owner
+    @owner = current_restaurant_owner
+  end
 end

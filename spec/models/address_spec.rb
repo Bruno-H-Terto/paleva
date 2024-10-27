@@ -75,6 +75,17 @@ RSpec.describe Address, type: :model do
       expect(address).not_to be_valid
     end
 
+    it 'estado deve estar em formato de UF' do
+      restaurant = Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
+                                  comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 
+                                  restaurant_owner: owner)
+
+      address = Address.new(street: 'Av. TDD Ruby on Rails', number: 42, district: 'Rubista', city: 'Condado',
+                            state: 'Minas Gerais', zip_code: '36000-000', complement: 'Loja 1', user: restaurant, user_type: Restaurant)
+
+      expect(address).not_to be_valid
+    end
+
     it 'CEP é obrigatório' do
       restaurant = Restaurant.create!(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
                                   comercial_phone: '(32) 4022-8922', email: 'podraodev@ruby.com', 

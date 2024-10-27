@@ -3,7 +3,15 @@
 <table>
   <p><%= link_to 'Editar dados do Restaurante', edit_restaurant_path(restaurant) %></p>
   <caption>Informações</caption>
+  <%= link_to 'Editar Endereço', edit_restaurant_address_path(restaurant, restaurant.address) %>
   <tbody>
+    <thead>
+      <tr>
+        <th>
+          Endereço
+        </th>
+      </tr>
+    </thead>
     <tr>
       <td>
         <address><%= restaurant.address.street %>, <%= restaurant.address.number %></address>
@@ -17,3 +25,4 @@
     </tr>
   </tbody>
 </table>
+
