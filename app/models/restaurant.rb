@@ -7,9 +7,6 @@ class Restaurant < ApplicationRecord
   has_many :dishes
   has_many :beverages
 
-  has_many :beverage_items, through: :beverages, source: :menu_items
-  has_many :dishes_items, through: :dishes, source: :menu_items
-
   validates :name, :brand_name, :comercial_phone, :register_number,
             :email, presence: true
   validates :register_number, uniqueness: true

@@ -11,6 +11,8 @@ RSpec.describe Restaurant, type: :model do
     it { should have_one(:address) }
     it { should have_many(:business_hours) }
     it { should accept_nested_attributes_for(:business_hours) }
+    it { should have_many(:dishes) }
+    it { should have_many(:beverages) }
 
     it 'todos os campos validos' do
       restaurant = Restaurant.new(name: 'Rubistas', brand_name: 'Ruby Work LTDA', register_number: '89078820000100',
